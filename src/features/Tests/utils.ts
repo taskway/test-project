@@ -20,7 +20,7 @@ export const formatAnswers = (tests: TestType[]) => tests.reduce((prevValue: Tes
 
 export const shuffleAnswers = (tests: TestType[]) => tests.reduce((prevValue: TestType[], test) => [...prevValue, { ...test, answers: shuffleArr(test.answers) }], [])
 
-export const updateAnswers = (test: TestType, answer: string) => {
+export const updateAnswers = (answer: string) => (test: TestType) => {
   const { type, answers } = test
   const otherAnswers = (item: AnswerType) => {
     if (type === 'boolean') {

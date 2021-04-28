@@ -30,9 +30,9 @@ export const selectAnswer = (answer: string): ThunkType => async (dispatch, getS
     const newTests = tests.map((test) => {
       if (test.question === currentTest?.question) {
         const newTest = compose(
-          updateAnswers,
+          updateAnswers(answer),
           checkCurrectAnswer
-        )(test, answer)
+        )(test)
         dispatch(actions.setCurrentTest(newTest))
         return newTest
       }
