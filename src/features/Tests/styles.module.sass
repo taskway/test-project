@@ -1,0 +1,36 @@
+section
+  width: 100%
+
+header, footer
+  padding: 0 20px
+
+@for $i from 1 to 10
+  section:nth-child(#{$i + 1})
+    margin-top: 25px
+
+.wrapperAnswers
+  margin-top: 5px
+
+.wrapperAnswer
+  line-height: 30px
+  padding: 0 20px
+  cursor: pointer
+  > *
+    display: inline-block
+    vertical-align: middle
+    cursor: pointer
+
+.answer
+  margin-left: 10px
+  font-size: 17px
+
+.containerButton
+  width: 100%
+  display: grid
+  justify-items: center
+  margin-top: 15px
+
+.difficulty
+  margin-top: 5px
+  text-align: right
+  color: #ababab
