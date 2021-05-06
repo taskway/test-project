@@ -2,10 +2,10 @@ import React, { FC } from 'react'
 import {
   AnswerType, DifficultyType, InputAnswerType
 } from '../types'
-import { Answers } from './Answers'
-import { Difficulty } from './Difficulty'
 import { Button } from './Button'
 import { WrapperTest } from '../../../common/styledComponents'
+import styles from '../styles.module.sass'
+import { Answer } from './Answer'
 
 interface ITest {
     category: string
@@ -26,13 +26,20 @@ export const Test: FC<ITest> = ({
         <h5 style={{ marginBottom: 5 }}>{category}</h5>
         <h3>{question}</h3>
       </header>
-      <Answers
-        answers={answers}
-        type={type}
-        showResult={showResult}
-      />
+      <div className={styles.wrapperAnswers}>
+        {answers.map(({ answer, correct, checked }) => (
+          <Answer
+            key={answer}
+            answer={answer}
+            correct={correct}
+            checked={checked}
+            type={type}
+            showResult={showResult}
+          />
+        ))}
+      </div>
       <footer>
-        <Difficulty difficulty={difficulty} showResult={showResult} />
+        {showResult && <h5 className={styles.difficulty}>{difficulty}</h5>}
       </footer>
     </WrapperTest>
     <Button showResult={showResult} />

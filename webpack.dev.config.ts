@@ -5,6 +5,7 @@ import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-serv
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 import ESLintPlugin from 'eslint-webpack-plugin'
+import autoprefixer from 'autoprefixer'
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration
@@ -42,6 +43,18 @@ const config: Configuration = {
             options: {
               modules: {
                 localIdentName: '[local]__[hash:base64:5]'
+              }
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  [
+                    autoprefixer
+                  ]
+                ]
               }
             }
           },

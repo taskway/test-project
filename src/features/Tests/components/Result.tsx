@@ -8,6 +8,6 @@ interface IResult {
 
 export const Result: FC<IResult> = ({ tests }) => (
   <div>
-    {tests.map((test, i) => <Test key={test.question} {...test} showResult />)}
+    {tests.map((test) => <Test key={test.question} {...test} showResult />)}
   </div>
 )

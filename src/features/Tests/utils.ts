@@ -1,5 +1,5 @@
 import { AnswerType, CountCurrectAnswersType, TestType } from './types'
-import { shuffleArr } from '../../common/utils'
+import { compose, shuffleArr } from '../../common/utils'
 
 export const formatAnswer = (answer: string, correct: boolean) => ({
   answer,
@@ -58,3 +58,21 @@ export const countCurrectAnswers = (answers: AnswerType[]) => answers.reduce((pr
   }
   return prevValue
 }, { correct: 0, incorrect: 0 })
+
+export const selectAnswerTest = (answer: string, tests: TestType[], currentTest: TestType | null) => {
+  let newCurrentTest = null
+
+  const newTests = tests.map((test) => {
+    if (test.question === currentTest?.question) {
+      const newTest = compose(
+        updateAnswers(answer),
+        checkCurrectAnswer
+      )(test)
+      newCurrentTest = newTest
+      return newTest
+    }
+    return test
+  })
+
+  return { newTests, newCurrentTest }
+}
