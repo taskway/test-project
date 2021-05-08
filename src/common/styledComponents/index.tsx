@@ -31,9 +31,9 @@ export const WrapperTest = styled.div`
   border-width: 2px;
   padding: 20px 0;
   border-radius: 5px;
-  border-color: ${({ isAright, showResult }: { isAright: boolean, showResult: boolean }) => {
+  border-color: ${({ isRight, showResult }: { isRight: boolean, showResult: boolean }) => {
     if (showResult) {
-      return isAright ? '#a0d9a2' : '#ffcbcb'
+      return isRight ? '#a0d9a2' : '#ffcbcb'
     }
     return '#e5e5e5'
   }

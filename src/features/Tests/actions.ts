@@ -8,9 +8,9 @@ import {
 } from './utils'
 
 export const actions = {
-  setTests: (tests: TestType[]) => ({ type: 'SET_TESTS', payload: { tests } } as const),
-  setCurrentTest: (payload: TestType | null) => ({ type: 'SET_CURRENT_TEST', payload } as const),
-  selectAnswer: (answer: string) => ({ type: 'SELECT_ANSWER', payload: { answer } } as const),
+  setTests: (tests: TestType[]) => ({ type: 'SET_TESTS', tests } as const),
+  setCurrentTest: (test: TestType | null) => ({ type: 'SET_CURRENT_TEST', test } as const),
+  selectAnswer: (answer: string) => ({ type: 'SELECT_ANSWER', answer } as const),
   getNextTest: () => ({ type: 'GET_NEXT_TEST' } as const)
 }
 

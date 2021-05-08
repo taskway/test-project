@@ -11,17 +11,17 @@ interface ITest {
     category: string
     question: string
     answers: AnswerType[]
-    isAright: boolean
+    isRight: boolean
     type: InputAnswerType
     difficulty: DifficultyType
     showResult?: boolean
 }
 
 export const Test: FC<ITest> = ({
-  category, question, answers, isAright, type, difficulty, showResult
+  category, question, answers, isRight, type, difficulty, showResult
 }) => (
   <section>
-    <WrapperTest isAright={isAright} showResult={!!showResult}>
+    <WrapperTest isRight={isRight} showResult={!!showResult}>
       <header>
         <h5 style={{ marginBottom: 5 }}>{category}</h5>
         <h3>{question}</h3>

@@ -11,20 +11,20 @@ export const testsReducer = (state = initialState, action: ActionTypes): typeof 
     case 'SET_TESTS':
       return {
         ...state,
-        tests: action.payload.tests
+        tests: action.tests
       }
     case 'SET_CURRENT_TEST':
       return {
         ...state,
-        currentTest: action.payload
+        currentTest: action.test
       }
     case 'SELECT_ANSWER': {
       const { tests, currentTest } = state
-      const { newTests, newCurrentTest } = selectAnswerTest(action.payload.answer, tests, currentTest)
+      const { updatedTests, updatedCurrentTest } = selectAnswerTest(action.answer, tests, currentTest)
       return {
         ...state,
-        tests: newTests,
-        currentTest: newCurrentTest
+        tests: updatedTests,
+        currentTest: updatedCurrentTest
       }
     }
     case 'GET_NEXT_TEST': {
