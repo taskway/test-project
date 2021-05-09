@@ -1,11 +1,12 @@
 import { TestType, ThunkType } from './types'
 import { testsAPI } from '../../api'
 import {
-  isSuccessCodeAPI, compose
+  compose
 } from '../../common/utils'
 import {
   formatAnswers, shuffleAnswers
 } from './utils'
+import { APICODES } from '../../common/types'
 
 export const actions = {
   setTests: (tests: TestType[]) => ({ type: 'SET_TESTS', tests } as const),
@@ -16,7 +17,7 @@ export const actions = {
 
 export const init = (): ThunkType => async (dispatch, getState) => {
   const { response_code, results } = await testsAPI.getTests(10)
-  if (isSuccessCodeAPI(response_code)) {
+  if (response_code === APICODES.SUCCESS) {
     const tests = compose(
       formatAnswers,
       shuffleAnswers

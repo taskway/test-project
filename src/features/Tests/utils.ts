@@ -19,22 +19,22 @@ export const formatAnswers = (tests: TestType[]) => tests.reduce((prevValue: Tes
 
 export const shuffleAnswers = (tests: TestType[]) => tests.reduce((prevValue: TestType[], test) => [...prevValue, { ...test, answers: shuffleArr(test.answers) }], [])
 
-export const selectAnswerTest = (answer: string, tests: TestType[], currentTest: TestType | null) => {
+export const selectAnswerTest = (selectedAnswer: string, tests: TestType[], currentTest: TestType | null) => {
   const updatedTestIndex = tests.findIndex((test) => test.question === currentTest?.question)
   const updatedTests = [...tests]
   updatedTests[updatedTestIndex] = compose(
-    updateAnswers(answer),
+    updateAnswers(selectedAnswer),
     checkCurrectAnswer
   )(updatedTests[updatedTestIndex])
   return { updatedTests, updatedCurrentTest: updatedTests[updatedTestIndex] }
 }
 
-export const updateAnswers = (currentAnswer: string) => (test: TestType) => {
+export const updateAnswers = (selectedAnswer: string) => (test: TestType) => {
   const { type, answers } = test
   return {
     ...test,
     answers: answers.map((answer) => {
-      if (answer.answer === currentAnswer) {
+      if (answer.answer === selectedAnswer) {
         return { ...answer, checked: !answer.checked }
       }
       return type === 'boolean' ? { ...answer, checked: false } : answer

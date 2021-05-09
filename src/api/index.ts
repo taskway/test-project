@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios'
-import { ResTestsType } from './types'
+import { ResGetTestsType } from './types'
 
 const instance = axios.create({
   baseURL: 'https://opentdb.com/',
@@ -8,6 +8,6 @@ const instance = axios.create({
 
 export const testsAPI = {
   getTests(amount: number) {
-    return instance.get('api.php', { params: { amount } }).then((res: AxiosResponse<ResTestsType>) => res.data)
+    return instance.get('api.php', { params: { amount } }).then((res: AxiosResponse<ResGetTestsType>) => res.data)
   }
 }
